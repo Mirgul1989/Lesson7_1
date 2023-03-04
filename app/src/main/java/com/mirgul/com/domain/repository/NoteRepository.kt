@@ -1,18 +1,18 @@
 package com.mirgul.com.domain.repository
 
-import androidx.room.Delete
-import androidx.room.Insert
-import androidx.room.Query
-import androidx.room.Update
-import com.mirgul.com.data.model.NoteEntity
+
 import com.mirgul.com.domain.model.Note
+import com.mirgul.com.domain.utils.Resource
+import kotlinx.coroutines.flow.Flow
+
 
 interface NoteRepository {
-    fun createNote(noteEntity: Note)
 
-    fun editNote(noteEntity: Note)
+    fun addNote(note: Note):Flow<Resource<Unit>>
 
-    fun deleteNote(noteEntity: Note)
+    fun editNote(note: Note):Flow<Resource<Unit>>
 
-    fun getNotes(): List<Note>
+    fun getAllNotes() : Flow<Resource<List<Note>>>
+
+    fun removeNote(note: Note):Flow<Resource<Unit>>
 }
